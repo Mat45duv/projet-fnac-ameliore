@@ -4,7 +4,7 @@
 
 try {
 
-$dns = 'mysql:host=localhost:3307;dbname=livres';
+$dns = 'mysql:host=localhost:3306;dbname=livres';
 
 $utilisateur = 'root';
 
