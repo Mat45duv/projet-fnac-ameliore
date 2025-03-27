@@ -1,4 +1,14 @@
 <?php
+// Démarre la session
+session_start();
+
+// Vérifie si l'utilisateur est connecté et a le rôle d'administrateur
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    // Si l'utilisateur n'est pas un administrateur, le rediriger vers la page de connexion ou une autre page
+    header('Location: index_client.php');
+    exit();
+}
+
 // Vérifiez si un message de succès est passé dans l'URL
 if (isset($_GET['success']) && $_GET['success'] === 'true') {
     echo '<p id="success-message" class="success-message">Les modifications du livre ont été enregistrées avec succès !</p>';
