@@ -61,6 +61,7 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Total (€)</th>
                 <th>Date de la commande</th>
                 <th>Statut de paiement</th>
+                <th>Statut</th> <!-- Changer "Statut de livraison" à "Statut" -->
             </tr>
         </thead>
         <tbody>
@@ -68,15 +69,17 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (count($orders) > 0) {
                 foreach ($orders as $order) {
                     echo "<tr>";
-                    echo "<td>" . htmlspecialchars($order['order_id']) . "</td>";
-                    echo "<td>" . htmlspecialchars($order['client_name']) . "</td>";
-                    echo "<td>" . htmlspecialchars($order['total']) . " €</td>";
-                    echo "<td>" . htmlspecialchars($order['order_date']) . "</td>";
-                    echo "<td>" . htmlspecialchars($order['payment_status']) . "</td>";
-                    echo "</tr>";
+echo "<td>" . htmlspecialchars($order['order_id']) . "</td>";
+echo "<td>" . htmlspecialchars($order['client_name']) . "</td>";
+echo "<td>" . htmlspecialchars($order['total']) . " €</td>";
+echo "<td>" . htmlspecialchars($order['order_date']) . "</td>";
+echo "<td>" . htmlspecialchars($order['payment_status']) . "</td>";
+echo "<td>" . htmlspecialchars($order['status']) . "</td>";
+echo "</tr>";
+
                 }
             } else {
-                echo "<tr><td colspan='5'>Aucune commande trouvée</td></tr>";
+                echo "<tr><td colspan='6'>Aucune commande trouvée</td></tr>";
             }
             ?>
         </tbody>

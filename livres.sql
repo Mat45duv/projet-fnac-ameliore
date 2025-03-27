@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 27 mars 2025 à 12:37
--- Version du serveur : 8.3.0
--- Version de PHP : 8.2.18
+-- Généré le : dim. 16 mars 2025 à 09:15
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `books` (
   `publisher` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `publish_date` date DEFAULT NULL,
   `rating` decimal(3,2) DEFAULT NULL,
-  `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `image_url` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `isbn` (`isbn`)
 ) ENGINE=MyISAM AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `books` (
 
 INSERT INTO `books` (`id`, `title`, `author`, `isbn`, `price`, `description`, `publisher`, `publish_date`, `rating`, `image_url`) VALUES
 (26, 'Fahrenheit 451', 'Ray Bradbury', '9781451673319', 15.00, 'Dans un futur où les livres sont interdits, un pompier se révolte.', 'Ballantine Books', '1953-10-19', 2.00, 'https://fr.web.img6.acsta.net/pictures/18/05/04/16/47/5013189.jpg'),
-(25, 'L\'Inconnu du Nord-Express', 'Patricia Highsmith', '9782253154620', 12.99, 'Un thriller sur un échange d\'assassinats entre deux inconnus.', 'Éditions de l\'Olivier', '1950-01-01', 2.00, 'https://fr.web.img5.acsta.net/medias/nmedia/18/35/34/70/18387371.jpg'),
-(24, 'Les Misérables', 'Victor Hugo', '9780451419439', 14.99, 'L\'histoire de la lutte de Jean Valjean contre l\'injustice sociale.', 'A. Lacroix, Verboeckhoven & Cie', '1862-04-03', 2.00, 'https://fr.web.img5.acsta.net/medias/nmedia/18/91/00/76/20364091.jpg'),
+(25, 'L\'Inconnu du Nord-Express', 'Patricia Highsmith', '9782253154620', 12.99, 'Un thriller sur un échange d\'assassinats entre deux inconnus.', 'Éditions de l\'Olivier', '1950-01-01', 1.30, 'https://fr.web.img5.acsta.net/medias/nmedia/18/35/34/70/18387371.jpg'),
+(24, 'Les Misérables', 'Victor Hugo', '9780451419439', 14.99, 'L\'histoire de la lutte de Jean Valjean contre l\'injustice sociale.', 'A. Lacroix, Verboeckhoven & Cie', '1862-04-03', 3.41, 'https://fr.web.img5.acsta.net/medias/nmedia/18/91/00/76/20364091.jpg'),
 (23, 'Le Gène égoïste', 'Richard Dawkins', '9780199291151', 18.00, 'Une exploration de l\'évolution selon la perspective du gène.', 'Oxford University Press', '1976-10-01', 3.16, 'https://m.media-amazon.com/images/I/71O1HTMoOEL.jpg'),
 (22, 'Sapiens : Une brève histoire de l\'humanité', 'Yuval Noah Harari', '9780099590088', 22.50, 'L\'histoire de l\'humanité depuis l\'émergence des Homo sapiens.', 'Harvill Secker', '2011-01-01', 0.58, 'https://m.media-amazon.com/images/I/61SaNiLLX-L._AC_UF1000,1000_QL80_.jpg'),
 (21, 'Les Origines du Totalitarisme', 'Hannah Arendt', '9782253122049', 25.00, 'Une analyse approfondie des régimes totalitaires du XXe siècle.', 'Fayard', '1951-09-01', 3.42, 'https://m.media-amazon.com/images/I/71tCCrQ-hqL._AC_UF1000,1000_QL80_.jpg'),
@@ -72,6 +72,7 @@ INSERT INTO `books` (`id`, `title`, `author`, `isbn`, `price`, `description`, `p
 (30, 'L\'Histoire de l\'Art', 'E.H. Gombrich', '9780714832470', 30.00, 'Une introduction complète à l\'histoire de l\'art, depuis la préhistoire jusqu\'à nos jours.', 'Phaidon Press', '1950-01-01', 3.92, 'https://www.lalibrairiedesecoles.com/wp-content/uploads/2014/05/9782385510312_CV_HARE_HD.jpg'),
 (31, 'Le Drapeau', 'André Malraux', '9782070369653', 11.50, 'Un roman qui explore la guerre et la résistance durant la guerre civile espagnole.', 'Gallimard', '1943-10-01', 2.07, NULL),
 (32, 'Le Nom de la Rose', 'Umberto Eco', '9782070723358', 17.00, 'Un mystère médiéval où un moine détective cherche à résoudre une série de meurtres.', 'Bompiani', '1980-11-01', 3.62, NULL),
+(33, 'La Route', 'Cormac McCarthy', '9780307387135', 14.00, 'Un père et son fils luttent pour survivre dans un monde post-apocalyptique.', 'Alfred A. Knopf', '2006-09-26', 1.86, NULL),
 (34, 'Middlesex', 'Jeffrey Eugenides', '9780349120850', 19.50, 'L\'histoire d\'un hermaphrodite à travers les générations de sa famille.', 'Farrar, Straus and Giroux', '2002-09-04', 3.44, NULL),
 (35, 'Le Temps des secrets', 'Marcel Pagnol', '9782264032490', 10.99, 'L\'enfance de l\'auteur dans la Provence du début du XXe siècle.', 'Éditions Calmann-Lévy', '1959-01-01', 1.64, NULL),
 (36, 'L\'Amant', 'Marguerite Duras', '9782253009530', 12.00, 'Un récit autobiographique de l\'amour interdit d\'une jeune fille en Indochine.', 'Éditions de Minuit', '1984-10-01', 2.89, 'https://media.hachette.fr/fit-in/780x1280/imgArticle/GRASSETFASQUELLE/2000/9782246458517-T.jpg?source=web'),
@@ -80,47 +81,8 @@ INSERT INTO `books` (`id`, `title`, `author`, `isbn`, `price`, `description`, `p
 (39, 'Autant en emporte le vent', 'Margaret Mitchell', '9782264057950', 15.99, 'Une histoire d\'amour épique et de survie pendant la guerre civile américaine.', 'Macmillan', '1936-06-30', 0.87, 'https://fr.web.img2.acsta.net/medias/00/01/99/000199_af.jpg'),
 (40, 'L\'Assommoir', 'Émile Zola', '9782070366751', 11.50, 'Un roman naturaliste sur la misère de la classe ouvrière à Paris.', 'Ch. Delagrave', '1877-08-01', 2.73, NULL),
 (41, 'Le Rouge et le Noir', 'Stendhal', '9780140440067', 12.99, 'Les aventures et l\'ascension sociale d\'un jeune homme ambitieux.', 'Fasquelle', '1830-11-01', 1.02, 'https://m.media-amazon.com/images/I/71eCRmiGMwL._AC_UF1000,1000_QL80_.jpg'),
-(42, 'Les Souffrances du Jeune Werther', 'Johann Wolfgang von Goethe', '9780140443037', 9.00, 'Un jeune homme éperdument amoureux qui finit par se suicider.', 'Cotta', '1774-12-01', 1.93, NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE IF NOT EXISTS `orders` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `client_name` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `total` decimal(10,2) DEFAULT NULL,
-  `order_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `payment_status` enum('pending','completed') COLLATE utf8mb4_general_ci DEFAULT 'pending',
-  PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `orders`
---
-
-INSERT INTO `orders` (`order_id`, `client_name`, `total`, `order_date`, `payment_status`) VALUES
-(1, 'Jean Dupont', 49.99, '2025-03-27 09:37:11', 'pending'),
-(2, 'mathis', 100.50, '2025-03-26 23:00:00', 'pending'),
-(3, 'mathis', 100.50, '2025-03-26 23:00:00', 'pending'),
-(4, 'duv', 100.50, '2025-03-26 23:00:00', 'pending'),
-(5, 'siu', 100.50, '2025-03-26 23:00:00', 'pending'),
-(6, 'alex', 100.50, '2025-03-26 23:00:00', 'pending'),
-(7, 'alexandre', 14.99, '2025-03-26 23:00:00', 'pending'),
-(8, 'theo', 14.99, '2025-03-26 23:00:00', 'pending'),
-(9, 'zino', 29.98, '2025-03-26 23:00:00', 'pending'),
-(10, 'moi', 29.98, '2025-03-26 23:00:00', 'pending'),
-(11, 'ici', 29.98, '2025-03-26 23:00:00', 'pending'),
-(12, 'maumau', 12.99, '2025-03-26 23:00:00', 'pending'),
-(13, 'cylian', 15.00, '2025-03-26 23:00:00', 'pending'),
-(14, 'iii', 13.00, '2025-03-26 23:00:00', 'pending'),
-(15, 'user1', 13.00, '2025-03-26 23:00:00', 'pending'),
-(16, 'user1', 27.98, '2025-03-26 23:00:00', 'pending'),
-(17, 'user1', 27.50, '2025-03-26 23:00:00', 'pending'),
-(18, 'user1', 39.99, '2025-03-26 23:00:00', 'pending');
+(42, 'Les Souffrances du Jeune Werther', 'Johann Wolfgang von Goethe', '9780140443037', 9.00, 'Un jeune homme éperdument amoureux qui finit par se suicider.', 'Cotta', '1774-12-01', 1.93, NULL),
+(43, 'La Vie est ailleurs', 'Milan Kundera', '9782264031547', 14.99, 'Un roman sur l\'existentialisme, l\'art et l\'amour.', 'Éditions Gallimard', '1973-03-01', 1.59, NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +94,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `role` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT 'user',
   PRIMARY KEY (`id`),
@@ -148,7 +110,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
 (2, 'user2', 'user2@example.com', '$2y$10$uZGvv88WKhfAgyO3sb7h5.bAo1sTp4Ob8p3v6DdchUJtGJXa0dZiC', 'user'),
 (3, 'admin', 'admin@example.com', 'adminpassword', 'admin'),
 (4, 'mathis', 'm@m.fr', '$2y$10$SKDhfQePBNDMoO2BLgvS0uDLKLbqg22Rzj2r4sycklf6aSOiG02kW', 'user'),
-(5, 'Titi', 't@t.fr', '$2y$10$s0co12YdgS9aMl9OBUasSuKru1lEZ2tOohuEN3OK9o7w/MXC7u.QO', 'admin'),
+(5, 'Titi', 't@t.fr', '$2y$10$s0co12YdgS9aMl9OBUasSuKru1lEZ2tOohuEN3OK9o7w/MXC7u.QO', 'user'),
 (6, 'Nath', 'n@n.fr', '$2y$10$cAhVW9n8ivie7MmYhVgF9uXJX50sv5xawRNotvItpqhZTvKN/ki4W', 'user');
 COMMIT;
 

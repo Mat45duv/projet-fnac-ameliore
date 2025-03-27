@@ -50,8 +50,9 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <header>
-        <h1>Supprimer un Livre</h1>
-        <a href="index_client.php">Retour à la page d'accueil</a>
+    <h1>Supprimer un Livre</h1>
+    <a href="index_client.php">Retour à la page d'accueil</a> | 
+    <a href="index.php">Retour à l'accueil principal</a> <!-- Ajout du lien vers index.php -->
     </header>
 
     <main>
@@ -84,6 +85,8 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php else: ?>
             <p>Aucun livre à afficher.</p>
         <?php endif; ?>
+
+        
     </main>
 
     <footer>

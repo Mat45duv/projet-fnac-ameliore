@@ -1,53 +1,102 @@
 /* Style de base */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+/* Corps de la page */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header */
 header {
     background-color: #333;
-    color: #fff;
+    color: white;
     padding: 20px;
     text-align: center;
 }
 
-a {
-    color: #333;
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header a {
+    color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 5px 10px;
+    background-color: #555;
+    border-radius: 4px;
 }
 
-a:hover {
-    text-decoration: underline;
+header a:hover {
+    background-color: #777;
 }
 
+/* Tableau des livres */
 table {
-    width: 80%;
-    margin: 20px auto;
+    width: 100%;
+    margin-top: 30px;
     border-collapse: collapse;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-    padding: 10px;
+table thead {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-th {
-    background-color: #f2f2f2;
+table th {
+    font-size: 1.1em;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #5cb85c;
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table td a:hover {
+    color: #c0392b;
+}
+
+/* Message si pas de livres */
+p {
+    font-size: 1.2em;
+    color: #888;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #333;
     color: white;
-    border: none;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #4cae4c;
+footer p {
+    font-size: 1em;
+    margin: 0;
 }
