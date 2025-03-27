@@ -19,7 +19,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="css/style2.css">
     <title>Fnac front</title>
     <script>
         // Fonction pour masquer le message après 5 secondes
@@ -50,11 +50,14 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
         
         <button type="submit">Chercher</button>
     </form>
-
+    
+    </div>
     <p><a href="ajout_livre.php">Ajouter un livre</a></p>
     
     <!-- Lien vers la page de modification de livre -->
     <p><a href="modif_livre.php">Modifier un livre</a></p>
+
+    <p><a href="supprimer_livre.php">Supprimer un livre</a></p>
 
     <!-- Afficher tous les livres comme une bibliothèque -->
     <div class="library">
@@ -72,6 +75,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
             <p>Aucun livre disponible dans le catalogue.</p>
         <?php endif; ?>
     </div>
+    
 
 </body>
 

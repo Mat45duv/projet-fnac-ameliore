@@ -9,7 +9,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Ajouter un Livre</title>
     <style>
         body {

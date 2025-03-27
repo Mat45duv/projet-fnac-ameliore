@@ -69,6 +69,8 @@ if (isset($_POST['logout'])) {
     exit;
 }
 
+
+
 // Sélectionner un livre au hasard pour la recommandation du jour
 $stmt = $pdo->prepare("SELECT * FROM books ORDER BY RAND() LIMIT 1");
 $stmt->execute();
@@ -95,105 +97,8 @@ if (isset($_POST['rate_book'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche de Livres</title>
-    <link rel="stylesheet" href="style5.css">
-    <style>
-        .book-details {
-            margin-top: 10px;
-            background-color: #f9f9f9;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .recommended-book {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #e0f7fa;
-            border: 1px solid #b2ebf2;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        .recommended-book h2 {
-            font-size: 1.5em;
-            color: #00796b;
-        }
-
-        .recommended-book button {
-            background-color: #4caf50;
-        }
-
-        .recommended-book button:hover {
-            background-color: #388e3c;
-        }
-
-        .paypal-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #0070ba;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .paypal-button:hover {
-            background-color: #005b8a;
-        }
-
-        .book-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 10px;
-            text-align: center;
-            width: 200px;
-            display: inline-block;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-        .book-card img {
-            width: 100px;
-            height: auto;
-            border-radius: 5px;
-        }
-        button {
-            margin-top: 10px;
-            padding: 8px 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .paypal-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #0070ba;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style6.css">
+    
 </head>
 <body>
     <header>
@@ -208,7 +113,14 @@ if (isset($_POST['rate_book'])) {
                 <form method="POST">
                     <button type="submit" name="logout"><?php echo $lang['logout_button']; ?></button>
                 </form>
+
+            <!-- Ajouter un bouton Profil -->
+            <form method="GET" action="profil.php">
+                <button type="submit"><?php echo $lang['profile_button']; ?></button>
+            </form>
             <?php endif; ?>
+
+            
 
             <!-- Formulaire pour changer de langue -->
             <form method="POST">
@@ -246,17 +158,25 @@ if (isset($_POST['rate_book'])) {
                 echo number_format($total, 2, ',', ' ') . ' €';
             ?></p>
 
-            <!-- Formulaire pour PayPal -->
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                <input type="hidden" name="cmd" value="_xclick">
-                <input type="hidden" name="business" value="votre-email-paypal@example.com">
-                <input type="hidden" name="item_name" value="Livres dans votre panier">
-                <input type="hidden" name="amount" value="<?php echo $total; ?>">
-                <input type="hidden" name="currency_code" value="EUR">
-                <input type="hidden" name="return" value="https://www.votresite.com/merci-pour-votre-commande.php">
-                <input type="hidden" name="cancel_return" value="https://www.votresite.com/annulation-commande.php">
-                <button type="submit" class="paypal-button"><?php echo $lang['pay_button']; ?></button>
-            </form>
+          
+
+<!-- Formulaire pour ajouter une commande avec montant total dynamique et date actuelle -->
+<form action="ajouter_commande.php" method="POST">
+<label for="client_name"><?php echo $lang['client_name_label']; ?> </label>
+<!-- Remplir le champ avec le nom d'utilisateur depuis la session -->
+<input type="text" id="client_name" name="client_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" required readonly>
+
+<label for="total"><?php echo $lang['total_label']; ?> </label>
+<input type="number" id="total" name="total" value="<?php echo $total; ?>" readonly>
+
+<label for="order_date"><?php echo $lang['order_date_label']; ?> </label>
+<input type="date" id="order_date" name="order_date" value="<?php echo date('Y-m-d'); ?>" readonly>
+
+<button type="submit" name="ajouter_commande"><?php echo $lang['add_order_button']; ?></button>
+</form>
+
+
+
 
         <?php else: ?>
             <p><?php echo $lang['empty_cart']; ?></p>
@@ -268,8 +188,9 @@ if (isset($_POST['rate_book'])) {
         <h2><?php echo $lang['recommended_book']; ?></h2>
         <?php if ($recommendedBook): ?>
             <h3><?php echo htmlspecialchars($recommendedBook['title']); ?></h3>
-            <p>Auteur : <?php echo htmlspecialchars($recommendedBook['author']); ?></p>
-            <p>Prix : <?php echo number_format($recommendedBook['price'], 2, ',', ' ') . ' €'; ?></p>
+            <p><?php echo $lang['author']; ?> : <?php echo htmlspecialchars($recommendedBook['author']); ?></p>
+<p><?php echo $lang['price']; ?> : <?php echo number_format($recommendedBook['price'], 2, ',', ' ') . ' €'; ?></p>
+
             <form method="POST">
                 <input type="hidden" name="book_id" value="<?php echo $recommendedBook['id']; ?>">
                 <button type="submit" name="add_to_cart"><?php echo $lang['add_to_cart']; ?></button>
@@ -278,7 +199,9 @@ if (isset($_POST['rate_book'])) {
             <p>Aucune recommandation disponible pour aujourd'hui.</p>
         <?php endif; ?>
     </div>
+    
 
+    
     <main>
         <div class="book-list">
             <?php if ($books): ?>
@@ -286,9 +209,10 @@ if (isset($_POST['rate_book'])) {
                     <div class="book-card">
                         <img src="<?php echo htmlspecialchars($book['image_url'] ?: 'placeholder.jpg'); ?>" alt="Image de <?php echo htmlspecialchars($book['title']); ?>">
                         <h3><?php echo htmlspecialchars($book['title']); ?></h3>
-                        <p>Auteur : <?php echo htmlspecialchars($book['author']); ?></p>
-                        <p>ISBN : <?php echo htmlspecialchars($book['isbn']); ?></p>
-                        <p>Prix : <?php echo number_format($book['price'], 2, ',', ' ') . ' €'; ?></p>
+                        <p><?php echo $lang['author']; ?> : <?php echo htmlspecialchars($book['author']); ?></p>
+                        <p><?php echo $lang['isbn']; ?> : <?php echo htmlspecialchars($book['isbn']); ?></p>
+                        <p><?php echo $lang['price']; ?> : <?php echo number_format($book['price'], 2, ',', ' ') . ' €'; ?></p>
+
                         
                         <!-- Afficher la note du livre -->
                         <?php if ($book['rating']): ?>

@@ -20,7 +20,7 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="css/style1.css">
     <title>Fnac front</title>
     <script>
         // Fonction pour masquer le message après 5 secondes
@@ -58,6 +58,12 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
     <p><a href="modif_livre.php">Modifier un livre</a></p>
 
     <p><a href="fnac_front.php">Bibliothèque des livres</a></p>
+
+    <p><a href="supprimer_livre.php">Supprimer un livre</a></p>
+
+    <p><a href="recap_commande.php">Récapitulatif des commandes</a></p>
+
+    <p><a href="changer_role.php">Changer rôle des utilisateurs</a></p>
 
     <!-- Bouton de déconnexion -->
     <p><a href="index_client.php" class="logout-button">Déconnexion</a></p>

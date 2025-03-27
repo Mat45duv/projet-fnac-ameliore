@@ -21,7 +21,7 @@ $count = $table->rowCount();
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Résultats de la recherche</title>
 </head>
 
